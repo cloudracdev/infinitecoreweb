@@ -2,7 +2,7 @@ import { Instagram, Mail, MessageCircle } from "lucide-react"
 
 const Footer = () => {
   return (
-    <footer id="contato" className="bg-black py-20 text-white">
+    <footer className="bg-black py-20 text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <h2 className="mb-6 text-4xl font-semibold sm:text-5xl">Estamos aqui por você.</h2>
