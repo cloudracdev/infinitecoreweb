@@ -64,7 +64,9 @@ const CategoryButtons: React.FC = () => {
                     {category.name}
                   </h3>
 
-                  <p className="text-sm leading-relaxed text-gray-600">{category.description}</p>
+                  <p className="text-sm leading-relaxed text-gray-600">
+                    {category.description}
+                  </p>
                 </div>
               </Link>
             )

@@ -20,8 +20,8 @@ const Hero = () => {
             </h1>
 
             <p className="mb-12 text-lg leading-relaxed text-gray-600 sm:text-xl">
-              Descubra a coleção mais exclusiva de produtos Apple com qualidade garantida e suporte
-              especializado.
+              Descubra a coleção mais exclusiva de produtos Apple com qualidade
+              garantida e suporte especializado.
             </p>
 
             <button

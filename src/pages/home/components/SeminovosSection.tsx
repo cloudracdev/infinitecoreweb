@@ -2,14 +2,19 @@ import React from "react"
 import { MessageCircle } from "lucide-react"
 import type { SeminovosSectionProps } from "../interfaces/SemiNovos"
 
-const SeminovosSection: React.FC<SeminovosSectionProps> = ({ variant = "home" }) => {
+const SeminovosSection: React.FC<SeminovosSectionProps> = ({
+  variant = "home",
+}) => {
   const handleWhatsAppClick = () => {
     const message =
       variant === "home"
         ? "Olá! Gostaria de ver os aparelhos seminovos disponíveis."
         : "Olá! Gostaria de ver os aparelhos seminovos desta categoria."
 
-    window.open(`https://wa.me/558496398187?text=${encodeURIComponent(message)}`, "_blank")
+    window.open(
+      `https://wa.me/558496398187?text=${encodeURIComponent(message)}`,
+      "_blank",
+    )
   }
 
   if (variant === "category") {

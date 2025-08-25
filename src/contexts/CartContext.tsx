@@ -103,7 +103,9 @@ interface CartContextType {
 
 export const CartContext = createContext<CartContextType | undefined>(undefined)
 
-export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [state, dispatch] = useReducer(cartReducer, {
     items: [],
     isOpen: false,
@@ -164,7 +166,8 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const getTotalPrice = () => {
     return state.items.reduce(
-      (total, item) => total + (item.basePrice + item.storagePrice) * item.quantity,
+      (total, item) =>
+        total + (item.basePrice + item.storagePrice) * item.quantity,
       0,
     )
   }

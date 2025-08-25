@@ -175,7 +175,10 @@ const TradeInSection = () => {
   const handleSubmit = () => {
     const answers = questions
       .filter((q) => {
-        if (q.id === "ciclos" && !formData.modelo.toLowerCase().includes("mac")) {
+        if (
+          q.id === "ciclos" &&
+          !formData.modelo.toLowerCase().includes("mac")
+        ) {
           return false
         }
         return formData[q.id as keyof typeof formData]
@@ -185,12 +188,16 @@ const TradeInSection = () => {
 
     const message = `🍎 *AVALIAÇÃO DE APARELHO APPLE*\n\n${answers}\n\n---\n\nGostaria de receber uma proposta para meu aparelho!`
 
-    window.open(`https://wa.me/558496398187?text=${encodeURIComponent(message)}`, "_blank")
+    window.open(
+      `https://wa.me/558496398187?text=${encodeURIComponent(message)}`,
+      "_blank",
+    )
   }
 
   const currentQuestion = questions[currentStep]
   const canProceed =
-    !currentQuestion?.required || formData[currentQuestion.id as keyof typeof formData]
+    !currentQuestion?.required ||
+    formData[currentQuestion.id as keyof typeof formData]
 
   return (
     <section className="min-h-screen bg-white p-4">
@@ -205,8 +212,8 @@ const TradeInSection = () => {
           </h2>
 
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-gray-600 sm:text-xl">
-            Recebemos seu dispositivo Apple com agilidade e segurança. Avaliação profissional e
-            proposta justa garantida.
+            Recebemos seu dispositivo Apple com agilidade e segurança. Avaliação
+            profissional e proposta justa garantida.
           </p>
         </div>
 
@@ -217,7 +224,9 @@ const TradeInSection = () => {
               <div className="mb-8 h-2 w-full rounded-full bg-gray-200">
                 <div
                   className="h-2 rounded-full bg-black transition-all duration-500"
-                  style={{ width: `${((currentStep + 1) / questions.length) * 100}%` }}
+                  style={{
+                    width: `${((currentStep + 1) / questions.length) * 100}%`,
+                  }}
                 ></div>
               </div>
 
@@ -236,14 +245,18 @@ const TradeInSection = () => {
                 {currentQuestion.type === "text" ? (
                   <input
                     type="text"
-                    value={formData[currentQuestion.id as keyof typeof formData]}
+                    value={
+                      formData[currentQuestion.id as keyof typeof formData]
+                    }
                     onChange={(e) => handleInputChange(e.target.value)}
                     placeholder={currentQuestion.placeholder}
                     className="w-full rounded-xl border border-gray-200 px-4 py-4 text-center transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-black"
                   />
                 ) : (
                   <select
-                    value={formData[currentQuestion.id as keyof typeof formData]}
+                    value={
+                      formData[currentQuestion.id as keyof typeof formData]
+                    }
                     onChange={(e) => handleInputChange(e.target.value)}
                     className="w-full rounded-xl border border-gray-200 px-4 py-4 text-center transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-black"
                   >
@@ -284,7 +297,8 @@ const TradeInSection = () => {
               </h3>
 
               <p className="mb-8 text-gray-600">
-                Vamos analisar as informações e enviar uma proposta justa para seu Apple.
+                Vamos analisar as informações e enviar uma proposta justa para
+                seu Apple.
               </p>
 
               <button

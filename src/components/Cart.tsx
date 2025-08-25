@@ -1,10 +1,28 @@
 import { useCart } from "@/hooks/useCart"
-import { ChevronDown, ChevronUp, Info, Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react"
+import {
+  ChevronDown,
+  ChevronUp,
+  Info,
+  Minus,
+  Plus,
+  ShoppingBag,
+  Trash2,
+  X,
+} from "lucide-react"
 import React, { useState } from "react"
 
 const Cart: React.FC = () => {
-  const { state, removeItem, updateQuantity, closeCart, getTotalItems, getTotalPrice } = useCart()
-  const [deliveryOption, setDeliveryOption] = useState<"entrega" | "retirada">("entrega")
+  const {
+    state,
+    removeItem,
+    updateQuantity,
+    closeCart,
+    getTotalItems,
+    getTotalPrice,
+  } = useCart()
+  const [deliveryOption, setDeliveryOption] = useState<"entrega" | "retirada">(
+    "entrega",
+  )
   const [cep, setCep] = useState("")
   const [includeInvoice, setIncludeInvoice] = useState(false)
   const [paymentMethod, setPaymentMethod] = useState<"pix" | "cartao">("pix")
@@ -23,7 +41,10 @@ const Cart: React.FC = () => {
     }
   }
 
-  const getInstallmentValue = (totalValue: number, installmentCount: number) => {
+  const getInstallmentValue = (
+    totalValue: number,
+    installmentCount: number,
+  ) => {
     const rates = {
       1: 1.0438,
       2: 1.0648,
@@ -67,7 +88,10 @@ const Cart: React.FC = () => {
 
     const message = `Olá! Gostaria de solicitar os seguintes produtos:\n\n${items}\n\n---\n\n${deliveryInfo}\n\n${paymentInfo}\n\n${invoiceInfo}`
 
-    window.open(`https://wa.me/558496398187?text=${encodeURIComponent(message)}`, "_blank")
+    window.open(
+      `https://wa.me/558496398187?text=${encodeURIComponent(message)}`,
+      "_blank",
+    )
   }
 
   return (
@@ -84,7 +108,9 @@ const Cart: React.FC = () => {
         <div className="flex items-center justify-between border-b border-gray-100 p-6">
           <div className="flex items-center space-x-3">
             <ShoppingBag className="h-6 w-6 text-black" />
-            <h2 className="text-xl font-semibold text-black">Carrinho ({getTotalItems()})</h2>
+            <h2 className="text-xl font-semibold text-black">
+              Carrinho ({getTotalItems()})
+            </h2>
           </div>
           <button
             onClick={closeCart}
@@ -99,8 +125,12 @@ const Cart: React.FC = () => {
           {state.items.length === 0 ? (
             <div className="py-12 text-center">
               <ShoppingBag className="mx-auto mb-4 h-16 w-16 text-gray-300" />
-              <h3 className="mb-2 text-lg font-medium text-gray-900">Seu carrinho está vazio</h3>
-              <p className="text-gray-500">Adicione produtos para começar suas compras</p>
+              <h3 className="mb-2 text-lg font-medium text-gray-900">
+                Seu carrinho está vazio
+              </h3>
+              <p className="text-gray-500">
+                Adicione produtos para começar suas compras
+              </p>
             </div>
           ) : (
             <div className="space-y-4">
@@ -108,7 +138,10 @@ const Cart: React.FC = () => {
                 const itemTotal = item.basePrice * item.quantity
 
                 return (
-                  <div key={item.uniqueId} className="rounded-2xl bg-gray-50 p-4">
+                  <div
+                    key={item.uniqueId}
+                    className="rounded-2xl bg-gray-50 p-4"
+                  >
                     <div className="flex space-x-4">
                       {/* Product Image */}
                       <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-xl bg-white">
@@ -128,14 +161,21 @@ const Cart: React.FC = () => {
                           <p>
                             {item.selectedStorage} • {item.selectedColor}
                           </p>
-                          <p className="font-medium">R$ {item.basePrice.toLocaleString("pt-BR")}</p>
+                          <p className="font-medium">
+                            R$ {item.basePrice.toLocaleString("pt-BR")}
+                          </p>
                         </div>
 
                         {/* Quantity Controls */}
                         <div className="mt-3 flex items-center justify-between">
                           <div className="flex items-center space-x-2">
                             <button
-                              onClick={() => handleQuantityChange(item.uniqueId, item.quantity - 1)}
+                              onClick={() =>
+                                handleQuantityChange(
+                                  item.uniqueId,
+                                  item.quantity - 1,
+                                )
+                              }
                               className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 transition-colors duration-200 hover:bg-gray-100"
                             >
                               <Minus className="h-3 w-3" />
@@ -144,7 +184,12 @@ const Cart: React.FC = () => {
                               {item.quantity}
                             </span>
                             <button
-                              onClick={() => handleQuantityChange(item.uniqueId, item.quantity + 1)}
+                              onClick={() =>
+                                handleQuantityChange(
+                                  item.uniqueId,
+                                  item.quantity + 1,
+                                )
+                              }
                               className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 transition-colors duration-200 hover:bg-gray-100"
                             >
                               <Plus className="h-3 w-3" />
@@ -181,7 +226,9 @@ const Cart: React.FC = () => {
                 onClick={() => setShowDeliveryInfo(!showDeliveryInfo)}
                 className="flex w-full items-center justify-between text-left"
               >
-                <h3 className="text-sm font-medium text-gray-900">Como deseja receber?</h3>
+                <h3 className="text-sm font-medium text-gray-900">
+                  Como deseja receber?
+                </h3>
                 {showDeliveryInfo ? (
                   <ChevronUp className="h-4 w-4" />
                 ) : (
@@ -197,10 +244,14 @@ const Cart: React.FC = () => {
                       name="delivery"
                       value="entrega"
                       checked={deliveryOption === "entrega"}
-                      onChange={(e) => setDeliveryOption(e.target.value as "entrega")}
+                      onChange={(e) =>
+                        setDeliveryOption(e.target.value as "entrega")
+                      }
                       className="h-4 w-4 border-gray-300 text-black focus:ring-black"
                     />
-                    <span className="text-xs text-gray-700">Entrega (Todo o Brasil)</span>
+                    <span className="text-xs text-gray-700">
+                      Entrega (Todo o Brasil)
+                    </span>
                   </label>
 
                   {deliveryOption === "entrega" && (
@@ -222,7 +273,9 @@ const Cart: React.FC = () => {
                         name="delivery"
                         value="retirada"
                         checked={deliveryOption === "retirada"}
-                        onChange={(e) => setDeliveryOption(e.target.value as "retirada")}
+                        onChange={(e) =>
+                          setDeliveryOption(e.target.value as "retirada")
+                        }
                         className="h-4 w-4 border-gray-300 text-black focus:ring-black"
                       />
                       <span className="text-xs text-gray-700">
@@ -232,8 +285,8 @@ const Cart: React.FC = () => {
                     <div className="group relative">
                       <Info className="h-3 w-3 cursor-help text-gray-400" />
                       <div className="pointer-events-none absolute bottom-full right-0 mb-2 w-48 rounded-lg bg-black p-2 text-xs text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                        Pagamento: 20% para pedido, 80% na retirada. Desistência: até 90 dias para
-                        devolução.
+                        Pagamento: 20% para pedido, 80% na retirada.
+                        Desistência: até 90 dias para devolução.
                       </div>
                     </div>
                   </label>
@@ -247,7 +300,9 @@ const Cart: React.FC = () => {
                 onClick={() => setShowPaymentInfo(!showPaymentInfo)}
                 className="flex w-full items-center justify-between text-left"
               >
-                <h3 className="text-sm font-medium text-gray-900">Forma de pagamento</h3>
+                <h3 className="text-sm font-medium text-gray-900">
+                  Forma de pagamento
+                </h3>
                 {showPaymentInfo ? (
                   <ChevronUp className="h-4 w-4" />
                 ) : (
@@ -263,7 +318,9 @@ const Cart: React.FC = () => {
                       name="payment"
                       value="pix"
                       checked={paymentMethod === "pix"}
-                      onChange={(e) => setPaymentMethod(e.target.value as "pix")}
+                      onChange={(e) =>
+                        setPaymentMethod(e.target.value as "pix")
+                      }
                       className="h-4 w-4 border-gray-300 text-black focus:ring-black"
                     />
                     <span className="text-xs text-gray-700">PIX à vista</span>
@@ -275,23 +332,32 @@ const Cart: React.FC = () => {
                       name="payment"
                       value="cartao"
                       checked={paymentMethod === "cartao"}
-                      onChange={(e) => setPaymentMethod(e.target.value as "cartao")}
+                      onChange={(e) =>
+                        setPaymentMethod(e.target.value as "cartao")
+                      }
                       className="h-4 w-4 border-gray-300 text-black focus:ring-black"
                     />
-                    <span className="text-xs text-gray-700">Cartão de crédito</span>
+                    <span className="text-xs text-gray-700">
+                      Cartão de crédito
+                    </span>
                   </label>
 
                   {paymentMethod === "cartao" && (
                     <div className="ml-7">
                       <select
                         value={installments}
-                        onChange={(e) => setInstallments(Number(e.target.value))}
+                        onChange={(e) =>
+                          setInstallments(Number(e.target.value))
+                        }
                         className="w-full rounded-md border border-gray-300 px-2 py-1 text-xs focus:border-transparent focus:ring-1 focus:ring-black"
                       >
                         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((num) => (
                           <option key={num} value={num}>
                             {num}x R${" "}
-                            {getInstallmentValue(getTotalPrice(), num).toLocaleString("pt-BR")}
+                            {getInstallmentValue(
+                              getTotalPrice(),
+                              num,
+                            ).toLocaleString("pt-BR")}
                           </option>
                         ))}
                       </select>
@@ -307,7 +373,9 @@ const Cart: React.FC = () => {
                 onClick={() => setShowInvoiceInfo(!showInvoiceInfo)}
                 className="flex w-full items-center justify-between text-left"
               >
-                <h3 className="text-sm font-medium text-gray-900">Nota Fiscal</h3>
+                <h3 className="text-sm font-medium text-gray-900">
+                  Nota Fiscal
+                </h3>
                 {showInvoiceInfo ? (
                   <ChevronUp className="h-4 w-4" />
                 ) : (
@@ -325,7 +393,8 @@ const Cart: React.FC = () => {
                       className="h-3 w-3 rounded border-gray-300 text-black focus:ring-black"
                     />
                     <span className="text-xs text-gray-700">
-                      Emitir Nota Fiscal <span className="text-gray-500">(+7%)</span>
+                      Emitir Nota Fiscal{" "}
+                      <span className="text-gray-500">(+7%)</span>
                     </span>
                   </label>
                 </div>

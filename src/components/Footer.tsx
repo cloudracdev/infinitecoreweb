@@ -2,12 +2,15 @@ import { Instagram, Mail, MessageCircle } from "lucide-react"
 
 const Footer = () => {
   return (
-    <footer id="contato" className="bg-black py-20 text-white">
+    <footer className="bg-black py-20 text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
-          <h2 className="mb-6 text-4xl font-semibold sm:text-5xl">Estamos aqui por você.</h2>
+          <h2 className="mb-6 text-4xl font-semibold sm:text-5xl">
+            Estamos aqui por você.
+          </h2>
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-gray-400 sm:text-xl">
-            Suporte especializado, experiência personalizada. Entre em contato conosco.
+            Suporte especializado, experiência personalizada. Entre em contato
+            conosco.
           </p>
         </div>
 
@@ -59,7 +62,10 @@ const Footer = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="rounded-3xl bg-gray-900 p-8" style={{ display: "none" }}>
+          <div
+            className="rounded-3xl bg-gray-900 p-8"
+            style={{ display: "none" }}
+          >
             <form className="space-y-6">
               <div>
                 <input
@@ -101,7 +107,9 @@ const Footer = () => {
         {/* Bottom */}
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col items-center justify-between space-y-4 sm:flex-row sm:space-y-0">
-            <div className="text-2xl font-semibold tracking-tight">InfiniteCore.store</div>
+            <div className="text-2xl font-semibold tracking-tight">
+              InfiniteCore.store
+            </div>
             <div className="text-sm text-gray-400">
               © 2024 InfiniteCore.store. Todos os direitos reservados.
             </div>

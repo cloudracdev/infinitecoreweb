@@ -27,7 +27,9 @@ const VideoSection = () => {
         </div>
 
         <div className="mt-6 text-center">
-          <h3 className="mb-2 text-xl font-semibold text-black">Apresentação InfiniteCore</h3>
+          <h3 className="mb-2 text-xl font-semibold text-black">
+            Apresentação InfiniteCore
+          </h3>
           <p className="text-gray-600">
             Conheça nossa história e compromisso com a excelência Apple
           </p>
@@ -39,7 +41,9 @@ const VideoSection = () => {
         <h3 className="mb-4 text-2xl font-semibold text-black sm:text-3xl">
           Experiência visual pura
         </h3>
-        <p className="text-lg text-gray-600">Unboxings, reviews e demonstrações exclusivas</p>
+        <p className="text-lg text-gray-600">
+          Unboxings, reviews e demonstrações exclusivas
+        </p>
       </div>
 
       <div
@@ -61,14 +65,21 @@ const VideoSection = () => {
               {/* Play Button */}
               <div className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors duration-300 group-hover:bg-black/10">
                 <div className="rounded-full bg-white/90 p-3 backdrop-blur-sm">
-                  <Play className="ml-0.5 h-4 w-4 text-black" fill="currentColor" />
+                  <Play
+                    className="ml-0.5 h-4 w-4 text-black"
+                    fill="currentColor"
+                  />
                 </div>
               </div>
             </div>
 
             <div className="p-4">
-              <h4 className="mb-1 text-sm font-medium text-black">Unboxing iPhone 15 Pro</h4>
-              <p className="text-xs text-gray-600">Experiência premium revelada</p>
+              <h4 className="mb-1 text-sm font-medium text-black">
+                Unboxing iPhone 15 Pro
+              </h4>
+              <p className="text-xs text-gray-600">
+                Experiência premium revelada
+              </p>
             </div>
           </div>
         ))}
