@@ -4,213 +4,200 @@ import { ArrowLeft, ShoppingBag } from "lucide-react"
 import React, { useState } from "react"
 import Header from "./Header"
 import SeminovosSection from "../pages/home/components/SeminovosSection"
-
-// Edição insignificante para teste
-// Função para arredondar preços conforme solicitado
-function arredondarPreco(preco) {
-  // Garante que o preço é inteiro
-  preco = Math.round(preco)
-  const centena = Math.floor(preco / 100) * 100
-  const resto = preco % 100
-  if (resto < 50) {
-    return centena + 50
-  } else {
-    return centena + 99
-  }
-}
+import Utils from "@/Utils/Utils"
 
 const priceMacbookProM4_128GB_2TB = 35499
 
 // ====== PREÇOS: iPhone 15 ======
-const price_iPhone15_128GB_rosa = arredondarPreco(3939 * 1.01 + 50)
+const price_iPhone15_128GB_rosa = Utils.arredondarPreco(3939 * 1.01 + 50)
 const IMG_iPhone15_Rosa =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/iphone15rosa700x400.png"
-const price_iPhone15_128GB_verde = arredondarPreco(3939 * 1.01 + 50)
+const price_iPhone15_128GB_verde = Utils.arredondarPreco(3939 * 1.01 + 50)
 const IMG_iPhone15_Verde =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/iphone15verde700x400.png"
-const price_iPhone15_128GB_azul = arredondarPreco(3939 * 1.01 + 50)
+const price_iPhone15_128GB_azul = Utils.arredondarPreco(3939 * 1.01 + 50)
 const IMG_iPhone15_Azul =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/iphone15azul700x400.png"
-const price_iPhone15_128GB_preto = arredondarPreco(3939 * 1.01 + 100)
+const price_iPhone15_128GB_preto = Utils.arredondarPreco(3939 * 1.01 + 100)
 const IMG_iPhone15_Preto =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/iphone15preto700x400.png"
 
 // ====== PREÇOS: iPhone 16e ======
-const price_iPhone16e_128GB_preto = arredondarPreco(3499 * 1.01 + 50)
+const price_iPhone16e_128GB_preto = Utils.arredondarPreco(3499 * 1.01 + 50)
 const IMG_iPhone16e_Preto =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/iphone16epreto1000x700.png"
-const price_iPhone16e_128GB_branco = arredondarPreco(3499 * 1.01 + 100)
+const price_iPhone16e_128GB_branco = Utils.arredondarPreco(3499 * 1.01 + 100)
 const IMG_iPhone16e_Branco =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/iphone16ebranco1000x1000.png"
 
 // ====== PREÇOS: iPhone 16 ======
-const price_iPhone16_128GB_azul = arredondarPreco(4499 * 1.01 + 50)
+const price_iPhone16_128GB_azul = Utils.arredondarPreco(4499 * 1.01 + 50)
 const IMG_iPhone16_Azul =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/iphone16azul1000x700.png"
-const price_iPhone16_128GB_preto = arredondarPreco(4469 * 1.01 + 50)
+const price_iPhone16_128GB_preto = Utils.arredondarPreco(4469 * 1.01 + 50)
 const IMG_iPhone16_Preto =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/iphone16preto1000x700.png"
-const price_iPhone16_128GB_branco = arredondarPreco(4469 * 1.01 + 100)
+const price_iPhone16_128GB_branco = Utils.arredondarPreco(4469 * 1.01 + 100)
 const IMG_iPhone16_Branco =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/iphone16branco1000x700.png"
-const price_iPhone16_256GB_preto = arredondarPreco(5299 * 1.01 + 100)
-const price_iPhone16_256GB_branco = arredondarPreco(5299 * 1.01 + 150)
+const price_iPhone16_256GB_preto = Utils.arredondarPreco(5299 * 1.01 + 100)
+const price_iPhone16_256GB_branco = Utils.arredondarPreco(5299 * 1.01 + 150)
 
 // ====== PREÇOS: iPhone 16 Pro ======
-const price_iPhone16Pro_128GB_desert = arredondarPreco(5499 * 1.01 + 50)
+const price_iPhone16Pro_128GB_desert = Utils.arredondarPreco(5499 * 1.01 + 50)
 const IMG_iPhone16Pro_Desert =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/iphone16prodesert.png"
-const price_iPhone16Pro_128GB_natural = arredondarPreco(5499 * 1.01 + 100)
+const price_iPhone16Pro_128GB_natural = Utils.arredondarPreco(5499 * 1.01 + 100)
 const IMG_iPhone16Pro_Natural =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/iphone16pronatural.png"
-const price_iPhone16Pro_128GB_branco = arredondarPreco(5499 * 1.01 + 100)
+const price_iPhone16Pro_128GB_branco = Utils.arredondarPreco(5499 * 1.01 + 100)
 const IMG_iPhone16Pro_Branco =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/iphone16probranco.png"
-const price_iPhone16Pro_128GB_preto = arredondarPreco(5499 * 1.01 + 150)
+const price_iPhone16Pro_128GB_preto = Utils.arredondarPreco(5499 * 1.01 + 150)
 const IMG_iPhone16Pro_Preto =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/iphone16propreto.png"
-const price_iPhone16Pro_256GB_desert = arredondarPreco(6499 * 1.01 + 100)
-const price_iPhone16Pro_256GB_branco = arredondarPreco(6499 * 1.01 + 150)
+const price_iPhone16Pro_256GB_desert = Utils.arredondarPreco(6499 * 1.01 + 100)
+const price_iPhone16Pro_256GB_branco = Utils.arredondarPreco(6499 * 1.01 + 150)
 
 // ====== PREÇOS: iPhone 16 Pro Max ======
-const price_iPhone16ProMax_256GB_desert = arredondarPreco(6549 * 1.01 + 100)
+const price_iPhone16ProMax_256GB_desert = Utils.arredondarPreco(6549 * 1.01 + 100)
 const IMG_iPhone16ProMax_Desert =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/iphone16promaxdesert.png"
-const price_iPhone16ProMax_256GB_natural = arredondarPreco(6549 * 1.01 + 100)
+const price_iPhone16ProMax_256GB_natural = Utils.arredondarPreco(6549 * 1.01 + 100)
 const IMG_iPhone16ProMax_Natural =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/iphone16promaxnatural.png"
-const price_iPhone16ProMax_256GB_branco = arredondarPreco(6549 * 1.01 + 150)
+const price_iPhone16ProMax_256GB_branco = Utils.arredondarPreco(6549 * 1.01 + 150)
 const IMG_iPhone16ProMax_Branco =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/iphone16promaxbranco.png"
 
 // ====== PREÇOS: MAC / iPad / Acessórios ======
 
 // ====== PREÇOS: Mac Mini M4 ======
-const price_MacMiniM4_16GB_256GB_Prata = arredondarPreco(4450 * 1.01 + 50)
+const price_MacMiniM4_16GB_256GB_Prata = Utils.arredondarPreco(4450 * 1.01 + 50)
 const IMG_MacMiniM4_16GB_256GB_Prata =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macminim4.png"
 
 // ====== PREÇOS: MacBook Air M3 ======
 // 13"
-const price_MacBookAirM3_13in_8GB_256GB_CinzaEspacial = arredondarPreco(6200 * 1.01 + 100)
+const price_MacBookAirM3_13in_8GB_256GB_CinzaEspacial = Utils.arredondarPreco(6200 * 1.01 + 100)
 const IMG_MacBookAirM3_13in_8GB_256GB_CinzaEspacial =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookairm3spacegray.png"
-const price_MacBookAirM3_13in_8GB_256GB_Midnight = arredondarPreco(6200 * 1.01 + 150)
+const price_MacBookAirM3_13in_8GB_256GB_Midnight = Utils.arredondarPreco(6200 * 1.01 + 150)
 const IMG_MacBookAirM3_13in_8GB_256GB_Midnight =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookairm3midnight.png"
-const price_MacBookAirM3_13in_16GB_256GB_Prata = arredondarPreco(6550 * 1.01 + 200)
+const price_MacBookAirM3_13in_16GB_256GB_Prata = Utils.arredondarPreco(6550 * 1.01 + 200)
 const IMG_MacBookAirM3_13in_16GB_256GB_Prata =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookairm3prata.png"
-const price_MacBookAirM3_13in_16GB_256GB_Midnight = arredondarPreco(6550 * 1.01 + 200)
+const price_MacBookAirM3_13in_16GB_256GB_Midnight = Utils.arredondarPreco(6550 * 1.01 + 200)
 const IMG_MacBookAirM3_13in_16GB_256GB_Midnight =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookairm3midnight.png"
-const price_MacBookAirM3_13in_16GB_512GB_Estelar = arredondarPreco(7550 * 1.01 + 200)
+const price_MacBookAirM3_13in_16GB_512GB_Estelar = Utils.arredondarPreco(7550 * 1.01 + 200)
 const IMG_MacBookAirM3_13in_16GB_512GB_Estelar =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookairm3estelar.png"
 // 15"
-const price_MacBookAirM3_15in_16GB_512GB_Midnight = arredondarPreco(9899)
+const price_MacBookAirM3_15in_16GB_512GB_Midnight = Utils.arredondarPreco(9899)
 const IMG_MacBookAirM3_15in_16GB_512GB_Midnight =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookairm3midnight.png"
 
 // ====== PREÇOS: MacBook Air M4 ======
 // 16GB/256GB
-const price_MacBookAirM4_16GB_256GB_SkyBlue = arredondarPreco(6599 * 1.01 + 100)
+const price_MacBookAirM4_16GB_256GB_SkyBlue = Utils.arredondarPreco(6599 * 1.01 + 100)
 const IMG_MacBookAirM4_16GB_256GB_SkyBlue =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookairm4skyblue.png"
-const price_MacBookAirM4_16GB_256GB_Estelar = arredondarPreco(6600 * 1.01 + 100)
+const price_MacBookAirM4_16GB_256GB_Estelar = Utils.arredondarPreco(6600 * 1.01 + 100)
 const IMG_MacBookAirM4_16GB_256GB_Estelar =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookairm3estelar.png"
-const price_MacBookAirM4_16GB_256GB_Prata = arredondarPreco(6600 * 1.01 + 100)
+const price_MacBookAirM4_16GB_256GB_Prata = Utils.arredondarPreco(6600 * 1.01 + 100)
 const IMG_MacBookAirM4_16GB_256GB_Prata =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookairm3prata.png"
-const price_MacBookAirM4_16GB_256GB_Midnight = arredondarPreco(6600 * 1.01 + 150)
+const price_MacBookAirM4_16GB_256GB_Midnight = Utils.arredondarPreco(6600 * 1.01 + 150)
 const IMG_MacBookAirM4_16GB_256GB_Midnight =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookairm3midnight.png"
 // Novos preços para MacBook Air M4 15"
-const priceMacbookAirM4_15_16_256_SkyBlue = arredondarPreco(8700 * 1.01 + 250)
-const priceMacbookAirM4_15_16_256_Midnight = arredondarPreco(8700 * 1.01 + 250)
+const priceMacbookAirM4_15_16_256_SkyBlue = Utils.arredondarPreco(8700 * 1.01 + 250)
+const priceMacbookAirM4_15_16_256_Midnight = Utils.arredondarPreco(8700 * 1.01 + 250)
 // 16GB/512GB
-const price_MacBookAirM4_16GB_512GB_SkyBlue = arredondarPreco(8850 * 1.01 + 250)
+const price_MacBookAirM4_16GB_512GB_SkyBlue = Utils.arredondarPreco(8850 * 1.01 + 250)
 const IMG_MacBookAirM4_16GB_512GB_SkyBlue =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookairm4skyblue.png"
-const price_MacBookAirM4_16GB_512GB_Estelar = arredondarPreco(8850 * 1.01 + 300)
+const price_MacBookAirM4_16GB_512GB_Estelar = Utils.arredondarPreco(8850 * 1.01 + 300)
 const IMG_MacBookAirM4_16GB_512GB_Estelar =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookairm3estelar.png"
-const price_MacBookAirM4_16GB_512GB_Midnight = arredondarPreco(8850 * 1.01 + 300)
+const price_MacBookAirM4_16GB_512GB_Midnight = Utils.arredondarPreco(8850 * 1.01 + 300)
 const IMG_MacBookAirM4_16GB_512GB_Midnight =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookairm3midnight.png"
 // 24GB/512GB
-const price_MacBookAirM4_24GB_512GB_SkyBlue = arredondarPreco(12799 * 1.01 + 600)
+const price_MacBookAirM4_24GB_512GB_SkyBlue = Utils.arredondarPreco(12799 * 1.01 + 600)
 const IMG_MacBookAirM4_24GB_512GB_SkyBlue =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookairm4skyblue.png"
-const price_MacBookAirM4_24GB_512GB_Estelar = arredondarPreco(12799 * 1.01 + 600)
+const price_MacBookAirM4_24GB_512GB_Estelar = Utils.arredondarPreco(12799 * 1.01 + 600)
 const IMG_MacBookAirM4_24GB_512GB_Estelar =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookairm3estelar.png"
-const price_MacBookAirM4_24GB_512GB_Prata = arredondarPreco(12799 * 1.01 + 600)
+const price_MacBookAirM4_24GB_512GB_Prata = Utils.arredondarPreco(12799 * 1.01 + 600)
 const IMG_MacBookAirM4_24GB_512GB_Prata =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookairm3prata.png"
-const price_MacBookAirM4_24GB_512GB_Midnight = arredondarPreco(12799 * 1.01 + 600)
+const price_MacBookAirM4_24GB_512GB_Midnight = Utils.arredondarPreco(12799 * 1.01 + 600)
 const IMG_MacBookAirM4_24GB_512GB_Midnight =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookairm3midnight.png"
 
 // ====== PREÇOS: MacBook Pro M4 ======
 // 14" + M4
-const price_MacBookProM4_14in_M4_16GB_512GB_PretoEspacial = arredondarPreco(11000 * 1.01 + 500)
+const price_MacBookProM4_14in_M4_16GB_512GB_PretoEspacial = Utils.arredondarPreco(11000 * 1.01 + 500)
 const IMG_MacBookProM4_14in_M4_16GB_512GB_PretoEspacial =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookprom4blackspace.png"
-const price_MacBookProM4_14in_M4_16GB_512GB_Prata = arredondarPreco(11000 * 1.01 + 600)
+const price_MacBookProM4_14in_M4_16GB_512GB_Prata = Utils.arredondarPreco(11000 * 1.01 + 600)
 const IMG_MacBookProM4_14in_M4_16GB_512GB_Prata =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookprom4silver.png"
-const price_MacBookProM4_14in_M4_24GB_1TB_PretoEspacial = arredondarPreco(15000 * 1.01 + 600)
+const price_MacBookProM4_14in_M4_24GB_1TB_PretoEspacial = Utils.arredondarPreco(15000 * 1.01 + 600)
 const IMG_MacBookProM4_14in_M4_24GB_1TB_PretoEspacial =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookprom4blackspace.png"
-const price_MacBookProM4_14in_M4_24GB_1TB_Prata = arredondarPreco(15000 * 1.01 + 700)
+const price_MacBookProM4_14in_M4_24GB_1TB_Prata = Utils.arredondarPreco(15000 * 1.01 + 700)
 const IMG_MacBookProM4_14in_M4_24GB_1TB_Prata =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookprom4silver.png"
 // 16" + M4
-const price_MacBookProM4_16in_M4_48GB_512GB_PretoEspacial = arredondarPreco(21500 * 1.01 + 800)
+const price_MacBookProM4_16in_M4_48GB_512GB_PretoEspacial = Utils.arredondarPreco(21500 * 1.01 + 800)
 const IMG_MacBookProM4_16in_M4_48GB_512GB_PretoEspacial =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookprom4blackspace.png"
-const price_MacBookProM4_16in_M4_48GB_512GB_Prata = arredondarPreco(21500 * 1.01 + 900)
+const price_MacBookProM4_16in_M4_48GB_512GB_Prata = Utils.arredondarPreco(21500 * 1.01 + 900)
 const IMG_MacBookProM4_16in_M4_48GB_512GB_Prata =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookprom4silver.png"
 // 14" + M4 Pro
-const price_MacBookProM4_14in_M4Pro_24GB_512GB_PretoEspacial = arredondarPreco(13600 * 1.01 + 800)
+const price_MacBookProM4_14in_M4Pro_24GB_512GB_PretoEspacial = Utils.arredondarPreco(13600 * 1.01 + 800)
 const IMG_MacBookProM4_14in_M4Pro_24GB_512GB_PretoEspacial =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookprom4blackspace.png"
-const price_MacBookProM4_14in_M4Pro_24GB_512GB_Prata = arredondarPreco(13600 * 1.01 + 900)
+const price_MacBookProM4_14in_M4Pro_24GB_512GB_Prata = Utils.arredondarPreco(13600 * 1.01 + 900)
 const IMG_MacBookProM4_14in_M4Pro_24GB_512GB_Prata =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookprom4silver.png"
 // 16" + M4 Pro
-const price_MacBookProM4_16in_M4Pro_24GB_512GB_PretoEspacial = arredondarPreco(17500 * 1.01 + 1000)
+const price_MacBookProM4_16in_M4Pro_24GB_512GB_PretoEspacial = Utils.arredondarPreco(17500 * 1.01 + 1000)
 const IMG_MacBookProM4_16in_M4Pro_24GB_512GB_PretoEspacial =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookprom4blackspace.png"
-const price_MacBookProM4_16in_M4Pro_24GB_512GB_Prata = arredondarPreco(17500 * 1.01 + 1100)
+const price_MacBookProM4_16in_M4Pro_24GB_512GB_Prata = Utils.arredondarPreco(17500 * 1.01 + 1100)
 const IMG_MacBookProM4_16in_M4Pro_24GB_512GB_Prata =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookprom4silver.png"
 // 14" + M4 Max
-const price_MacBookProM4_14in_M4Max_36GB_1TB_PretoEspacial = arredondarPreco(23000 * 1.01 + 2000)
+const price_MacBookProM4_14in_M4Max_36GB_1TB_PretoEspacial = Utils.arredondarPreco(23000 * 1.01 + 2000)
 const IMG_MacBookProM4_14in_M4Max_36GB_1TB_PretoEspacial =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookprom4blackspace.png"
-const price_MacBookProM4_14in_M4Max_36GB_1TB_Prata = arredondarPreco(23000 * 1.01 + 2300)
+const price_MacBookProM4_14in_M4Max_36GB_1TB_Prata = Utils.arredondarPreco(23000 * 1.01 + 2300)
 const IMG_MacBookProM4_14in_M4Max_36GB_1TB_Prata =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookprom4silver.png"
 // 16" + M4 Max
-const price_MacBookProM4_16in_M4Max_36GB_1TB_PretoEspacial = arredondarPreco(24500 * 1.01 + 2500)
+const price_MacBookProM4_16in_M4Max_36GB_1TB_PretoEspacial = Utils.arredondarPreco(24500 * 1.01 + 2500)
 const IMG_MacBookProM4_16in_M4Max_36GB_1TB_PretoEspacial =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookprom4blackspace.png"
-const price_MacBookProM4_16in_M4Max_36GB_1TB_Prata = arredondarPreco(24500 * 1.01 + 2600)
+const price_MacBookProM4_16in_M4Max_36GB_1TB_Prata = Utils.arredondarPreco(24500 * 1.01 + 2600)
 const IMG_MacBookProM4_16in_M4Max_36GB_1TB_Prata =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookprom4silver.png"
-const price_MacBookProM4_16in_M4Max_48GB_1TB_PretoEspacial = arredondarPreco(28900 * 1.01 + 3000)
+const price_MacBookProM4_16in_M4Max_48GB_1TB_PretoEspacial = Utils.arredondarPreco(28900 * 1.01 + 3000)
 const IMG_MacBookProM4_16in_M4Max_48GB_1TB_PretoEspacial =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookprom4blackspace.png"
-const price_MacBookProM4_16in_M4Max_48GB_1TB_Prata = arredondarPreco(28900 * 1.01 + 3200)
+const price_MacBookProM4_16in_M4Max_48GB_1TB_Prata = Utils.arredondarPreco(28900 * 1.01 + 3200)
 const IMG_MacBookProM4_16in_M4Max_48GB_1TB_Prata =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookprom4silver.png"
 // MacBook Pro M4 Max 16" 128GB/2TB - Space Black e Silver
-const PRICE_MACBOOK_PRO_M4_MAX_16_128GB_2TB_SPACE_BLACK = arredondarPreco(49000 * 1.01 + 10000)
-const PRICE_MACBOOK_PRO_M4_MAX_16_128GB_2TB_SILVER = arredondarPreco(49000 * 1.01 + 11000)
+const PRICE_MACBOOK_PRO_M4_MAX_16_128GB_2TB_SPACE_BLACK = Utils.arredondarPreco(49000 * 1.01 + 10000)
+const PRICE_MACBOOK_PRO_M4_MAX_16_128GB_2TB_SILVER = Utils.arredondarPreco(49000 * 1.01 + 11000)
 const IMAGE_MACBOOK_PRO_M4_MAX_16_128GB_2TB_SPACE_BLACK =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/macbookprom4max16-128-2tb-black.png"
 const IMAGE_MACBOOK_PRO_M4_MAX_16_128GB_2TB_SILVER =
@@ -240,78 +227,78 @@ const IMG_iPadPro_SpaceGray =
 const IMG_iPadPro_Prata =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/ipadprosilver.png"
 // 128GB — custos informados, sem multiplicador adicional (apenas arredondamento 50/99)
-const price_iPad11_128GB_Silver = arredondarPreco(2550 + 35 + 100)
-const price_iPad11_128GB_Blue = arredondarPreco(2500 + 35 + 50)
-const price_iPad11_128GB_Pink = arredondarPreco(2550 + 35 + 50)
+const price_iPad11_128GB_Silver = Utils.arredondarPreco(2550 + 35 + 100)
+const price_iPad11_128GB_Blue = Utils.arredondarPreco(2500 + 35 + 50)
+const price_iPad11_128GB_Pink = Utils.arredondarPreco(2550 + 35 + 50)
 // 256GB — custos informados
-const price_iPad11_256GB_Silver = arredondarPreco(3350 + 35 + 100)
-const price_iPad11_256GB_Blue = arredondarPreco(3250 + 35 + 50)
-const price_iPad11_256GB_Pink = arredondarPreco(3300 + 35 + 50)
+const price_iPad11_256GB_Silver = Utils.arredondarPreco(3350 + 35 + 100)
+const price_iPad11_256GB_Blue = Utils.arredondarPreco(3250 + 35 + 50)
+const price_iPad11_256GB_Pink = Utils.arredondarPreco(3300 + 35 + 50)
 
 // ====== PREÇOS: iPad Air ======
 // iPad Air 11" 128GB: custo 4000, +1%, e adicionais por cor
-const price_iPadAir_11in_128GB_SpaceGray = arredondarPreco(4000 * 1.01 + 150)
-const price_iPadAir_11in_128GB_Estelar = arredondarPreco(4000 * 1.01 + 100)
-const price_iPadAir_11in_128GB_Azul = arredondarPreco(4000 * 1.01 + 100)
-const price_iPadAir_11in_128GB_Roxo = arredondarPreco(4000 * 1.01 + 50)
+const price_iPadAir_11in_128GB_SpaceGray = Utils.arredondarPreco(4000 * 1.01 + 150)
+const price_iPadAir_11in_128GB_Estelar = Utils.arredondarPreco(4000 * 1.01 + 100)
+const price_iPadAir_11in_128GB_Azul = Utils.arredondarPreco(4000 * 1.01 + 100)
+const price_iPadAir_11in_128GB_Roxo = Utils.arredondarPreco(4000 * 1.01 + 50)
 
 // iPad Air 11" 256GB: custo 4750, +1%, e adicionais por cor
-const price_iPadAir_11in_256GB_SpaceGray = arredondarPreco(4750 * 1.01 + 100)
-const price_iPadAir_11in_256GB_Estelar = arredondarPreco(4750 * 1.01 + 150)
-const price_iPadAir_11in_256GB_Azul = arredondarPreco(4750 * 1.01 + 50)
-const price_iPadAir_11in_256GB_Roxo = arredondarPreco(4750 * 1.01 + 50)
+const price_iPadAir_11in_256GB_SpaceGray = Utils.arredondarPreco(4750 * 1.01 + 100)
+const price_iPadAir_11in_256GB_Estelar = Utils.arredondarPreco(4750 * 1.01 + 150)
+const price_iPadAir_11in_256GB_Azul = Utils.arredondarPreco(4750 * 1.01 + 50)
+const price_iPadAir_11in_256GB_Roxo = Utils.arredondarPreco(4750 * 1.01 + 50)
 
 // iPad Air 13" 128GB: custo 5350, +1%, e adicionais por cor
-const price_iPadAir_13in_128GB_SpaceGray = arredondarPreco(5350 * 1.01 + 100)
-const price_iPadAir_13in_128GB_Estelar = arredondarPreco(5350 * 1.01 + 150)
-const price_iPadAir_13in_128GB_Azul = arredondarPreco(5350 * 1.01 + 50)
-const price_iPadAir_13in_128GB_Roxo = arredondarPreco(5350 * 1.01 + 50)
+const price_iPadAir_13in_128GB_SpaceGray = Utils.arredondarPreco(5350 * 1.01 + 100)
+const price_iPadAir_13in_128GB_Estelar = Utils.arredondarPreco(5350 * 1.01 + 150)
+const price_iPadAir_13in_128GB_Azul = Utils.arredondarPreco(5350 * 1.01 + 50)
+const price_iPadAir_13in_128GB_Roxo = Utils.arredondarPreco(5350 * 1.01 + 50)
 // IPAD AIR 7
 
 // ====== PREÇOS: iPad Pro ======
-const priceIpadPro11_256_SpaceGray = arredondarPreco(6100 * 1.01 + 150)
-const priceIpadPro11_256_Silver = arredondarPreco(6100 * 1.01 + 200)
+const priceIpadPro11_256_SpaceGray = Utils.arredondarPreco(6100 * 1.01 + 150)
+const priceIpadPro11_256_Silver = Utils.arredondarPreco(6100 * 1.01 + 200)
 // 📱 iPad Pro 11"
-const priceIPadPro11_512_SpaceGray = arredondarPreco(9200 * 1.01 + 200)
-const priceIPadPro11_512_Silver = arredondarPreco(9200 * 1.01 + 250)
+const priceIPadPro11_512_SpaceGray = Utils.arredondarPreco(9200 * 1.01 + 200)
+const priceIPadPro11_512_Silver = Utils.arredondarPreco(9200 * 1.01 + 250)
 
 // 📱 iPad Pro 13"
-const priceIPadPro13_256_SpaceGray = arredondarPreco(8900 * 1.01 + 200)
-const priceIPadPro13_256_Silver = arredondarPreco(8900 * 1.01 + 200)
-const priceIPadPro13_512_SpaceGray = arredondarPreco(10950 * 1.01 + 300)
-const priceIPadPro13_512_Silver = arredondarPreco(10950 * 1.01 + 350)
+const priceIPadPro13_256_SpaceGray = Utils.arredondarPreco(8900 * 1.01 + 200)
+const priceIPadPro13_256_Silver = Utils.arredondarPreco(8900 * 1.01 + 200)
+const priceIPadPro13_512_SpaceGray = Utils.arredondarPreco(10950 * 1.01 + 300)
+const priceIPadPro13_512_Silver = Utils.arredondarPreco(10950 * 1.01 + 350)
 
 // ACESSÓRIOS
-const price_AppleWatchSE_40mm = arredondarPreco(2999)
+const price_AppleWatchSE_40mm = Utils.arredondarPreco(2999)
 const IMG_AppleWatchSE_40mm =
   "https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&w=1200"
-const price_AppleWatchSE_44mm = arredondarPreco(3299)
+const price_AppleWatchSE_44mm = Utils.arredondarPreco(3299)
 const IMG_AppleWatchSE_44mm =
   "https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&w=1200"
-const price_AppleWatchSeries10_42mm = arredondarPreco(4999)
+const price_AppleWatchSeries10_42mm = Utils.arredondarPreco(4999)
 const IMG_AppleWatchSeries10_42mm =
   "https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&w=1200"
-const price_AppleWatchSeries10_46mm = arredondarPreco(5399)
+const price_AppleWatchSeries10_46mm = Utils.arredondarPreco(5399)
 const IMG_AppleWatchSeries10_46mm =
   "https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&w=1200"
-const price_AppleWatchUltra2_49mm = arredondarPreco(4750 * 1.01 + 300)
+const price_AppleWatchUltra2_49mm = Utils.arredondarPreco(4750 * 1.01 + 300)
 
 // Apple Watch SE (GPS) — regra: custo + 35 (taxa) + 50 (lucro)
-const price_AppleWatchSE_40mm_Midnight = arredondarPreco(1380 + 35 + 50)
-const price_AppleWatchSE_40mm_Silver = arredondarPreco(1380 + 35 + 50)
-const price_AppleWatchSE_40mm_Estelar = arredondarPreco(1450 + 35 + 50)
+const price_AppleWatchSE_40mm_Midnight = Utils.arredondarPreco(1380 + 35 + 50)
+const price_AppleWatchSE_40mm_Silver = Utils.arredondarPreco(1380 + 35 + 50)
+const price_AppleWatchSE_40mm_Estelar = Utils.arredondarPreco(1450 + 35 + 50)
 
-const price_AppleWatchSE_44mm_Midnight = arredondarPreco(1550 + 35 + 50)
-const price_AppleWatchSE_44mm_Silver = arredondarPreco(1580 + 35 + 50)
-const price_AppleWatchSE_44mm_Estelar = arredondarPreco(1550 + 35 + 50)
+const price_AppleWatchSE_44mm_Midnight = Utils.arredondarPreco(1550 + 35 + 50)
+const price_AppleWatchSE_44mm_Silver = Utils.arredondarPreco(1580 + 35 + 50)
+const price_AppleWatchSE_44mm_Estelar = Utils.arredondarPreco(1550 + 35 + 50)
 
-const price_AppleWatchSeries10_42mm_Rosa = arredondarPreco(2400 + 35 + 100)
-const price_AppleWatchSeries10_42mm_Silver = arredondarPreco(2450 + 35 + 100)
-const price_AppleWatchSeries10_42mm_JetBlack = arredondarPreco(2450 + 35 + 150)
+const price_AppleWatchSeries10_42mm_Rosa = Utils.arredondarPreco(2400 + 35 + 100)
+const price_AppleWatchSeries10_42mm_Silver = Utils.arredondarPreco(2450 + 35 + 100)
+const price_AppleWatchSeries10_42mm_JetBlack = Utils.arredondarPreco(2450 + 35 + 150)
 
-const price_AppleWatchSeries10_46mm_Rosa = arredondarPreco(2300 + 35 + 50)
-const price_AppleWatchSeries10_46mm_Silver = arredondarPreco(2500 + 35 + 100)
-const price_AppleWatchSeries10_46mm_JetBlack = arredondarPreco(2600 + 35 + 150)
+const price_AppleWatchSeries10_46mm_Rosa = Utils.arredondarPreco(2300 + 35 + 50)
+const price_AppleWatchSeries10_46mm_Silver = Utils.arredondarPreco(2500 + 35 + 100)
+const price_AppleWatchSeries10_46mm_JetBlack = Utils.arredondarPreco(2600 + 35 + 150)
 const IMG_AppleWatchUltra2_49mm =
   "https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&w=1200"
 // ====== AIRPODS: padronização de preços ======
@@ -322,7 +309,7 @@ const RPROFIT = 50 // Lucro padrão
 function calculatePrice(base, colorAdj = 0) {
   // Se base > 4000, aplica RTAX, senão BASE_PRICE
   const tax = base > 4000 ? base * RTAX : BASE_PRICE
-  return arredondarPreco(base + tax + RPROFIT + colorAdj)
+  return Utils.arredondarPreco(base + tax + RPROFIT + colorAdj)
 }
 const AIRPODS4_COST = 1050
 const AIRPODS4_NC_COST = 1350
@@ -342,9 +329,9 @@ const IMG_AirPodsPro2 =
 const price_AirPodsMax = calculatePrice(AIRPODS_MAX_COST, 300)
 const IMG_AirPodsMax =
   "https://raw.githubusercontent.com/cloudracdev/images-site-infinite-core-products/refs/heads/main/airpodsmaxpreto.png"
-const price_ApplePencil2 = arredondarPreco(600 + 35 + 50)
-const price_ApplePencilUSBC = arredondarPreco(650 + 35 + 50)
-const price_ApplePencilPro = arredondarPreco(900 + 35 + 50)
+const price_ApplePencil2 = Utils.arredondarPreco(600 + 35 + 50)
+const price_ApplePencilUSBC = Utils.arredondarPreco(650 + 35 + 50)
+const price_ApplePencilPro = Utils.arredondarPreco(900 + 35 + 50)
 
 interface Product {
   id: string
