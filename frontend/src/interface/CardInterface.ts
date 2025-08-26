@@ -4,7 +4,7 @@ export interface Color {
 }
 
 export interface CardConfigurationProps {
-  key: "tela" | "configuração" | "modelo" | "chip" | "tamanho"
+  key: "tela" | "configuracao" | "modelo" | "chip" | "tamanho"
   keyValue: string[]
 }
 
@@ -15,6 +15,6 @@ export interface CardInterface {
   productValue: number
   productImage: string
   productImageAlt: string
-  configuration: ReadonlyArray<CardConfigurationProps> // DEIXAR OBRIGATÓRIO QUANDO IMPLEMENTAR
+  configuration: ReadonlyArray<CardConfigurationProps>
   color: ReadonlyArray<Color>
 }

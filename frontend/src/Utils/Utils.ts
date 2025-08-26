@@ -17,6 +17,7 @@ function arredondarPreco(preco: number) {
  * @returns A string com a primeira letra maiúscula
  */
 function capitalize(str: string) {
+  if (str === "configuracao") return "Configuração"
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
@@ -96,6 +97,28 @@ function formatMoneyToString(money: string | number) {
   })
 }
 
+/**
+ * Formata uma string com base na chave e no valor fornecidos
+ * @param key A chave a ser formatada
+ * @param keyValue O valor a ser formatado
+ * @returns A string formatada
+ */
+function formatString(key: string, keyValue: string | number) {
+  switch (key) {
+    case "tela":
+      return `Tela: ${formatStringScreen(keyValue)}\n`
+
+    case "configuracao":
+      return `Configuração: ${formatStringConfiguration(keyValue)}\n`
+
+    case "tamanho":
+      return `Tamanho: ${formatStringSize(keyValue)}\n`
+
+    default:
+      return String(keyValue)
+  }
+}
+
 export default {
   arredondarPreco,
   capitalize,
@@ -103,4 +126,5 @@ export default {
   formatStringConfiguration,
   formatMoneyToString,
   formatStringSize,
+  formatString,
 }

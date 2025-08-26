@@ -1,4 +1,5 @@
 import { useCart } from "@/hooks/useCart"
+import Utils from "@/Utils/Utils"
 import {
   ChevronDown,
   ChevronUp,
@@ -9,17 +10,12 @@ import {
   Trash2,
   X,
 } from "lucide-react"
-import React, { useState } from "react"
+import { useState } from "react"
 
-const Cart: React.FC = () => {
-  const {
-    state,
-    removeItem,
-    updateQuantity,
-    closeCart,
-    getTotalItems,
-    getTotalPrice,
-  } = useCart()
+// TODO: REVIEW ALL LOGIC HERE
+const Cart = () => {
+  const { state, removeItem, updateQuantity, closeCart, getTotalItems } =
+    useCart()
   const [deliveryOption, setDeliveryOption] = useState<"entrega" | "retirada">(
     "entrega",
   )
@@ -68,7 +64,9 @@ const Cart: React.FC = () => {
     const items = state.items
       .map(
         (item) =>
-          `• ${item.name}\n  - Configuração: ${item.selectedStorage}\n  - Cor: ${item.selectedColor}\n  - Quantidade: ${item.quantity}`,
+          `• ${item.name}\n  - Configuração: ${Object.entries(item.configuration)
+            .map(([key, value]) => Utils.formatString(key, value))
+            .join("\n")}\n  - Cor: ${item.color}\n  - Quantidade: ${item.quantity}`,
       )
       .join("\n")
 
@@ -135,13 +133,10 @@ const Cart: React.FC = () => {
           ) : (
             <div className="space-y-4">
               {state.items.map((item) => {
-                const itemTotal = item.basePrice * item.quantity
+                const itemTotal = item.price * item.quantity
 
                 return (
-                  <div
-                    key={item.uniqueId}
-                    className="rounded-2xl bg-gray-50 p-4"
-                  >
+                  <div key={item.id} className="rounded-2xl bg-gray-50 p-4">
                     <div className="flex space-x-4">
                       {/* Product Image */}
                       <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-xl bg-white">
@@ -159,10 +154,15 @@ const Cart: React.FC = () => {
                         </h3>
                         <div className="space-y-1 text-xs text-gray-600">
                           <p>
-                            {item.selectedStorage} • {item.selectedColor}
+                            {Object.entries(item.configuration).map(
+                                ([key, value]) => [
+                                  Utils.formatString(key, value),
+                                ],
+                              )}{" "}
+                            • {item.color}
                           </p>
                           <p className="font-medium">
-                            R$ {item.basePrice.toLocaleString("pt-BR")}
+                            {Utils.formatMoneyToString(item.price)}
                           </p>
                         </div>
 
@@ -171,10 +171,7 @@ const Cart: React.FC = () => {
                           <div className="flex items-center space-x-2">
                             <button
                               onClick={() =>
-                                handleQuantityChange(
-                                  item.uniqueId,
-                                  item.quantity - 1,
-                                )
+                                handleQuantityChange(item.id, item.quantity - 1)
                               }
                               className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 transition-colors duration-200 hover:bg-gray-100"
                             >
@@ -185,10 +182,7 @@ const Cart: React.FC = () => {
                             </span>
                             <button
                               onClick={() =>
-                                handleQuantityChange(
-                                  item.uniqueId,
-                                  item.quantity + 1,
-                                )
+                                handleQuantityChange(item.id, item.quantity + 1)
                               }
                               className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 transition-colors duration-200 hover:bg-gray-100"
                             >
@@ -201,7 +195,7 @@ const Cart: React.FC = () => {
                               R$ {itemTotal.toLocaleString("pt-BR")}
                             </span>
                             <button
-                              onClick={() => removeItem(item.uniqueId)}
+                              onClick={() => removeItem(item.id)}
                               className="flex-shrink-0 rounded-full p-1 transition-colors duration-200 hover:bg-red-100"
                             >
                               <Trash2 className="h-4 w-4 text-red-500" />
@@ -342,7 +336,7 @@ const Cart: React.FC = () => {
                     </span>
                   </label>
 
-                  {paymentMethod === "cartao" && (
+                  {/* {paymentMethod === "cartao" && (
                     <div className="ml-7">
                       <select
                         value={installments}
@@ -362,7 +356,7 @@ const Cart: React.FC = () => {
                         ))}
                       </select>
                     </div>
-                  )}
+                  )} */}
                 </div>
               )}
             </div>
@@ -402,12 +396,12 @@ const Cart: React.FC = () => {
             </div>
 
             {/* Total */}
-            <div className="flex items-center justify-between border-t border-gray-100 pt-3">
+            {/* <div className="flex items-center justify-between border-t border-gray-100 pt-3">
               <span className="text-lg font-semibold text-black">Total</span>
               <span className="text-xl font-bold text-black">
                 R$ {getTotalPrice().toLocaleString("pt-BR")}
               </span>
-            </div>
+            </div> */}
 
             {/* Action Buttons */}
             <div className="space-y-2">

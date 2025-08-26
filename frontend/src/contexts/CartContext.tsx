@@ -1,15 +1,20 @@
 import React, { createContext, useEffect, useReducer } from "react"
 
+interface CartConfiguration {
+  tela?: string
+  configuracao?: string
+  modelo?: string
+  chip?: string
+  tamanho?: string
+}
 export interface CartItem {
   id: string
   name: string
-  basePrice: number
-  selectedStorage: string
-  selectedColor: string
-  storagePrice: number
+  color: string
+  configuration: CartConfiguration
+  price: number
   quantity: number
   image: string
-  uniqueId: string // Add unique identifier for each cart item
 }
 
 interface CartState {
@@ -33,13 +38,14 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
       const existingItemIndex = state.items.findIndex(
         (item) =>
           item.id === action.payload.id &&
-          item.selectedStorage === action.payload.selectedStorage &&
-          item.selectedColor === action.payload.selectedColor,
+          item.name === action.payload.name &&
+          item.color === action.payload.color &&
+          JSON.stringify(item.configuration) === JSON.stringify(action.payload.configuration)
       )
 
-      if (existingItemIndex >= 0) {
+      if (existingItemIndex !== -1) {
         const updatedItems = [...state.items]
-        updatedItems[existingItemIndex].quantity += action.payload.quantity
+        updatedItems[existingItemIndex].quantity += 1
         return { ...state, items: updatedItems, isOpen: true }
       }
 
@@ -53,13 +59,13 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
     case "REMOVE_ITEM":
       return {
         ...state,
-        items: state.items.filter((item) => item.uniqueId !== action.payload),
+        items: state.items.filter((item) => item.id !== action.payload),
       }
 
     case "UPDATE_QUANTITY": {
       const updatedItems = state.items
         .map((item) =>
-          item.uniqueId === action.payload.id
+          item.id === action.payload.id
             ? { ...item, quantity: Math.max(0, action.payload.quantity) }
             : item,
         )
@@ -91,14 +97,13 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 interface CartContextType {
   state: CartState
   addItem: (item: CartItem) => void
-  removeItem: (uniqueId: string) => void
-  updateQuantity: (uniqueId: string, quantity: number) => void
+  removeItem: (id: string) => void
+  updateQuantity: (id: string, quantity: number) => void
   clearCart: () => void
   toggleCart: () => void
   openCart: () => void
   closeCart: () => void
   getTotalItems: () => number
-  getTotalPrice: () => number
 }
 
 export const CartContext = createContext<CartContextType | undefined>(undefined)
@@ -124,7 +129,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   }, [])
 
-  // Save cart to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("infinitecore-cart", JSON.stringify(state.items))
   }, [state.items])
@@ -164,14 +168,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     return state.items.reduce((total, item) => total + item.quantity, 0)
   }
 
-  const getTotalPrice = () => {
-    return state.items.reduce(
-      (total, item) =>
-        total + (item.basePrice + item.storagePrice) * item.quantity,
-      0,
-    )
-  }
-
   return (
     <CartContext.Provider
       value={{
@@ -184,7 +180,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         openCart,
         closeCart,
         getTotalItems,
-        getTotalPrice,
       }}
     >
       {children}

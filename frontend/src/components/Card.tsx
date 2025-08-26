@@ -1,7 +1,9 @@
+import { useCart } from "@/hooks/useCart"
 import type { CardInterface } from "@/interface/CardInterface"
 import Utils from "@/Utils/Utils"
 import { ShoppingBag } from "lucide-react"
 import { useState } from "react"
+import { MessageService as Msg } from "@/services/MessageService"
 
 function Card({
   productImage,
@@ -13,23 +15,50 @@ function Card({
   configuration,
   color,
 }: CardInterface) {
+  const { addItem } = useCart()
   const [selectedColor, setSelectedColor] = useState<number | null>(0)
   const [selectedConfiguration, setSelectedConfiguration] = useState<{
     [key: string]: string | number | boolean | null
   }>({
-    tela: 0,
-    configuração: 0,
-    modelo: 0,
-    chip: 0,
-    tamanho: 0,
+    tela: null,
+    configuracao: null,
+    modelo: null,
+    chip: null,
+    tamanho: null,
   })
+
+  const handleAddToCart = () => {
+    let allConfigurationsSelected = false
+    configuration.map((config) => {
+      selectedConfiguration[config.key] == null
+        ? (allConfigurationsSelected = false)
+        : (allConfigurationsSelected = true)
+    })
+
+    if (!allConfigurationsSelected) {
+      Msg.setError("Por favor, selecione todas as configurações.")
+      return
+    }
+
+    addItem({
+      id: `${productName.replace(" ", "-")}-${color[selectedColor || 0].name}`,
+      name: productName,
+      color: color[selectedColor || 0].name,
+      configuration: Object.fromEntries(
+        Object.entries(selectedConfiguration).filter(([_, v]) => v !== null),
+      ),
+      price: productValue,
+      quantity: 1,
+      image: productImage,
+    })
+  }
 
   const formatKey = (key: string, keyValue: string) => {
     switch (key) {
       case "tela":
         return Utils.formatStringScreen(keyValue)
 
-      case "configuração":
+      case "configuracao":
         return Utils.formatStringConfiguration(keyValue)
 
       case "tamanho":
@@ -74,10 +103,10 @@ function Card({
                     onClick={() =>
                       setSelectedConfiguration({
                         ...selectedConfiguration,
-                        [config.key]: index,
+                        [config.key]: option,
                       })
                     }
-                    className={`rounded-md border px-2 py-1 text-xs transition-all duration-200 ${selectedConfiguration[config.key] === index ? "border-black bg-black text-white" : "border-gray-300 hover:border-gray-400"}`}
+                    className={`rounded-md border px-2 py-1 text-xs transition-all duration-200 ${selectedConfiguration[config.key] === option ? "border-black bg-black text-white" : "border-gray-300 hover:border-gray-400"}`}
                   >
                     {formatKey(config.key, option)}
                   </button>
@@ -114,6 +143,7 @@ function Card({
 
         <button
           disabled={isOut}
+          onClick={handleAddToCart}
           className={`flex items-center rounded-full px-3 py-1.5 transition-colors duration-300 ${isOut ? "cursor-not-allowed bg-gray-300 text-gray-500" : "bg-black text-white hover:bg-gray-900"}`}
         >
           <ShoppingBag className="mr-1.5 h-3 w-3" />

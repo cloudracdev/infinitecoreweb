@@ -10,7 +10,7 @@ const configuration = [
     keyValue: ["6.1", "6.7"],
   },
   {
-    key: "configuração",
+    key: "configuracao",
     keyValue: ["128", "256"],
   },
 ]
@@ -43,7 +43,7 @@ const MOCK = [
   {
     isOut: isOut,
     productDescription: productDescription,
-    productName: productName,
+    productName: "IPHONE 2",
     productValue: productValue,
     productImage: productImage,
     productImageAlt: productImageAlt,
