@@ -1,4 +1,4 @@
-package com.infinitecore.store.security;
+package com.infinitecore.store.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +20,6 @@ public class WebSecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/api/v1/admin/**").hasAnyRole("ADMIN", "OWNER")
                         .anyRequest().authenticated()

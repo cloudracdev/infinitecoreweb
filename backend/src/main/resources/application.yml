@@ -14,21 +14,21 @@ spring:
     location: classpath:banner.txt
 
   datasource:
-    url: jdbc:h2:mem:infinitecore
-    driver-class-name: org.h2.Driver
-    username: sa
+    url: jdbc:postgresql://localhost:5432/infinitecore
+    username: postgres
     password: 123
+    driver-class-name: org.postgresql.Driver
 
-  h2:
-    console:
-      path: /h2-console
-      enabled: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    baseline-version: 1
 
   jpa:
     show-sql: true
-    defer-datasource-initialization: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     properties:
       hibernate:
         format-sql: true
