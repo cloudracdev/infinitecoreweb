@@ -19,7 +19,7 @@ public class SkuPrice {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @OneToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "sku_id", referencedColumnName = "id")
     private Skus sku;
 

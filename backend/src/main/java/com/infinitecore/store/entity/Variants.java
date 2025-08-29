@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -43,5 +45,8 @@ public class Variants {
     @PositiveOrZero(message = "Provide a valid watch size")
     @Column(precision = 4, scale = 1, name = "case_size_mm")
     private BigDecimal caseSizeMm = BigDecimal.valueOf(0.0);
+
+    @OneToOne(mappedBy = "variant", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Skus skus;
 
 }

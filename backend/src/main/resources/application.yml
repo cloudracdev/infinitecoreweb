@@ -1,7 +1,14 @@
+jwt:
+    secret: ${JWT_KEY:8MmjKZkZOG6/tzR9MVD3Pdwfxxuqvp1oPyGKARCGtR52C+BLZWrljHdR/cSCXZKp}
+    expiration:
+      ms:
+        access: 86400000          # 1 day
+        refresh: 604800000      # 7 days
+
 logging:
   level:
     root: INFO
-    com.barbosa: DEBUG
+    org.springframework.security: DEBUG
 
 server:
   port: 8080

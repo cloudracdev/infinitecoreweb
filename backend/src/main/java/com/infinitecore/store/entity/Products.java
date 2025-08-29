@@ -9,6 +9,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -26,6 +28,10 @@ public class Products {
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Categories category;
 
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
     @NotNull(message = "Product name cannot be null")
     @Column(nullable = false, length = 50)
     private String name;
@@ -41,5 +47,8 @@ public class Products {
     @Column(name = "updated_at", insertable = false)
     @UpdateTimestamp
     private Timestamp updatedAt = createdAt;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Variants> variants = new ArrayList<>();
 
 }
