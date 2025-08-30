@@ -1,5 +1,3 @@
-BEGIN;
-
 DROP SCHEMA IF EXISTS "auth" CASCADE;
 DROP SCHEMA IF EXISTS "catalog" CASCADE;
 DROP SCHEMA IF EXISTS "sales" CASCADE;
@@ -8,7 +6,7 @@ CREATE SCHEMA "auth";
 CREATE SCHEMA "catalog";
 CREATE SCHEMA "sales";
 
-CREATE TYPE "status_enum" AS ENUM (
+CREATE TYPE "sales"."status_enum" AS ENUM (
     'ACTIVE',
     'INACTIVE',
     'OUT_OF_STOCK'
@@ -29,7 +27,7 @@ CREATE TABLE "auth"."users"
 CREATE TABLE "catalog"."categories"
 (
     "id"   UUID PRIMARY KEY,
-    "name" varchar(80) NOT NULL
+    "name" varchar(80) NOT NULL UNIQUE
 );
 
 CREATE TABLE "catalog"."products"
@@ -60,7 +58,7 @@ CREATE TABLE "sales"."skus"
     "id"         UUID PRIMARY KEY,
     "variant_id" UUID UNIQUE        NOT NULL,
     "sku_code"   varchar(60) UNIQUE NOT NULL,
-    "status"     status_enum        NOT NULL DEFAULT 'ACTIVE'
+    "status"     "sales".status_enum        NOT NULL DEFAULT 'ACTIVE'
 );
 
 CREATE TABLE "sales"."images"
@@ -104,5 +102,3 @@ ALTER TABLE "sales"."sku_price"
 
 ALTER TABLE "sales"."inventory"
     ADD FOREIGN KEY ("sku_id") REFERENCES "sales"."skus" ("id") ON DELETE CASCADE;
-
-COMMIT;
