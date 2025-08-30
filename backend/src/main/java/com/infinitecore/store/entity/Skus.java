@@ -28,9 +28,9 @@ public class Skus {
     @Column(length = 60, nullable = false, name = "sku_code", unique = true)
     private String skuCode;
 
-    @Column(length = 15, nullable = false)
     @Enumerated(EnumType.STRING)
-    private StatusEnum status = StatusEnum.ACTIVE;
+    @Column(length = 15, nullable = false, insertable = false, columnDefinition = "sales.status_enum default 'ACTIVE'")
+    private StatusEnum status;
 
     @OneToMany(mappedBy = "sku", cascade =  CascadeType.ALL, orphanRemoval = true)
     private List<Images> images = new ArrayList<>();
