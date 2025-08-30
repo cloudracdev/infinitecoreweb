@@ -40,6 +40,9 @@ public class Products {
     @Column(nullable = false, name = "model_year")
     private Integer modelYear;
 
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true, fetch =  FetchType.LAZY)
+    private List<Variants> variants = new ArrayList<>();
+
     @Column(name = "created_at", updatable = false, nullable = false, insertable = false)
     @CreationTimestamp
     private Timestamp createdAt;
@@ -48,7 +51,5 @@ public class Products {
     @UpdateTimestamp
     private Timestamp updatedAt = createdAt;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Variants> variants = new ArrayList<>();
 
 }

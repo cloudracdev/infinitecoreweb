@@ -21,7 +21,7 @@ public class Skus {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "variant_id", unique = true, referencedColumnName = "id")
     private Variants variant;
 
@@ -36,7 +36,7 @@ public class Skus {
     private List<Images> images = new ArrayList<>();
 
     @OneToOne(mappedBy = "sku", cascade =  CascadeType.ALL, orphanRemoval = true)
-    private SkuPrice prices;
+    private SkuPrice price;
 
     @OneToOne(mappedBy = "sku", cascade =  CascadeType.ALL, orphanRemoval = true)
     private Inventory inventory;

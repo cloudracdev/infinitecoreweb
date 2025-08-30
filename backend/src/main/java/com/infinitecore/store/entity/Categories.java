@@ -26,7 +26,7 @@ public class Categories {
     @Column(length = 80, nullable = false)
     private CategoryEnum name;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Products> product = new ArrayList<>();
 
 }

@@ -2,6 +2,7 @@ package com.infinitecore.store.config;
 
 import com.infinitecore.store.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,6 +17,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class AppConfiguration {
 
     private final UserRepository repository;
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
 
     @Bean
     public UserDetailsService userDetailsService() {
