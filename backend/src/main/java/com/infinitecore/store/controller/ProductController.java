@@ -1,7 +1,7 @@
 package com.infinitecore.store.controller;
 
-import com.infinitecore.store.controller.dto.ProductAddDTO;
-import com.infinitecore.store.controller.dto.ProductResponseDTO;
+import com.infinitecore.store.controller.dto.product.ProductAddDTO;
+import com.infinitecore.store.controller.dto.product.ProductResponseDTO;
 import com.infinitecore.store.entity.Products;
 import com.infinitecore.store.enums.CategoryEnum;
 import com.infinitecore.store.service.ProductService;

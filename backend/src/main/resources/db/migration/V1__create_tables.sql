@@ -8,13 +8,22 @@ CREATE SCHEMA "auth";
 CREATE SCHEMA "catalog";
 CREATE SCHEMA "sales";
 
+CREATE TYPE "status_enum" AS ENUM (
+    'ACTIVE',
+    'INACTIVE',
+    'OUT_OF_STOCK'
+    );
+
 CREATE TABLE "auth"."users"
 (
-    "id"         UUID PRIMARY KEY,
-    "username"   varchar(30) UNIQUE NOT NULL,
-    "password"   varchar(100)       NOT NULL,
-    "created_at" timestamp          NOT NULL DEFAULT (now()),
-    "updated_at" timestamp          NOT NULL DEFAULT (now())
+    "id"            UUID PRIMARY KEY,
+    "username"      varchar(30) UNIQUE NOT NULL,
+    "password"      varchar(100)       NOT NULL,
+    "role"          varchar(20)        NOT NULL DEFAULT 'ROLE_CUSTOMER',
+    "is_active"     boolean            NOT NULL DEFAULT true,
+    "refresh_token" text,
+    "created_at"    timestamp          NOT NULL DEFAULT (now()),
+    "updated_at"    timestamp          NOT NULL DEFAULT (now())
 );
 
 CREATE TABLE "catalog"."categories"
@@ -51,7 +60,7 @@ CREATE TABLE "sales"."skus"
     "id"         UUID PRIMARY KEY,
     "variant_id" UUID UNIQUE        NOT NULL,
     "sku_code"   varchar(60) UNIQUE NOT NULL,
-    "status"     varchar(15)        NOT NULL DEFAULT 'ACTIVE'
+    "status"     status_enum        NOT NULL DEFAULT 'ACTIVE'
 );
 
 CREATE TABLE "sales"."images"

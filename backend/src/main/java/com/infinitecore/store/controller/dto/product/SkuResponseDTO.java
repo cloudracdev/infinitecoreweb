@@ -1,4 +1,4 @@
-package com.infinitecore.store.controller.dto;
+package com.infinitecore.store.controller.dto.product;
 
 import com.infinitecore.store.enums.StatusEnum;
 import lombok.AllArgsConstructor;

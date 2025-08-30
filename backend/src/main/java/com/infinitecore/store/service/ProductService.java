@@ -1,18 +1,15 @@
 package com.infinitecore.store.service;
 
-import com.infinitecore.store.controller.dto.ProductAddDTO;
+import com.infinitecore.store.controller.dto.product.ProductAddDTO;
 import com.infinitecore.store.entity.*;
 import com.infinitecore.store.enums.CategoryEnum;
 import com.infinitecore.store.repository.*;
-import jakarta.validation.constraints.Positive;
 import org.springframework.transaction.annotation.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
